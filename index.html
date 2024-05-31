@@ -3,12 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- title -->
     <title>Bookmark</title>
-    <!-- Icon -->
-    <link rel="icon" href="imags/iconsite.png" />
-    <!-- Css Files -->
+    <link rel="icon" href="images/iconsite.png" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/main.css" />
   </head>
@@ -16,10 +12,9 @@
     <section id="bookmark">
       <div class="container">
         <div class="header py-3 text-center">
-          <h1>Bookmark <span>Site</span></h1>
+          <h1>Bookmark <span class="text-dark">Site</span></h1>
         </div>
         <hr />
-
         <div class="bg-dark bg-opacity-25 p-5 rounded">
           <div class="pb-2 text-center">
             <h2>Bookmark your favorite sites</h2>
@@ -30,31 +25,37 @@
               class="form-control mb-4"
               placeholder="Bookmark Name"
               id="siteName"
-              oninput="validateName(this)"
+              oninput="validateInput(this)"
               type="text"
             />
-            <div class="alert fw-bold d-none alert-danger mt-2 py-2">
-              <small>
-                Site name must contain at least 3 characters and no
-                symbols!.</small
+            <div
+              class="alert fw-bold d-none alert-danger mt-2 py-2"
+              id="nameAlert"
+            >
+              <small
+                >Site name must contain at least 3 English or Arabic characters
+                and no symbols!</small
               >
             </div>
-            <label for="siteURL">Site URL </label>
+            <label for="siteURL">Site URL</label>
             <input
               class="form-control mb-4"
               placeholder="Bookmark Site"
               id="siteURL"
-              oninput="validateName(this)"
+              oninput="validateInput(this)"
               type="text"
             />
-            <div class="alert fw-bold d-none alert-danger mt-2 py-2">
-              <small> Site URL must be a valid one </small>
+            <div
+              class="alert fw-bold d-none alert-danger mt-2 py-2"
+              id="urlAlert"
+            >
+              <small>Please enter a valid URL</small>
             </div>
-                     <div class="text-center">
+            <div class="text-center">
               <button
-                class="px-4 btn btn-light "
+                class="px-4 btn btn-light"
                 type="submit"
-                onclick="addBookMark()"
+                onclick="addBookmark()"
               >
                 Submit
               </button>
@@ -62,27 +63,24 @@
           </div>
         </div>
         <hr />
-        <div class="row bg-light text-dark py-2 rounded-top-2 text-center border-bottom">
-          <div class="col-3">
-            <h3>Index</h3>
-          </div>
-          <div class="col-3">
-            <h3>Website Name</h3>
-          </div>
-          <div class="col-3">
-            <h3>Visit</h3>
-          </div>
-          <div class="col-3">
-            <h3>Delete</h3>
-          </div>
+        <div class="table-container">
+          <table class="text-center table table-striped">
+            <thead class="table bg-light text-dark rounded-top-2 border-bottom">
+              <tr class="py-2">
+                <th>Index</th>
+                <th>Website Name</th>
+                <th>Visit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody
+              id="rowDataBookmark"
+              class="table bg-light text-dark opacity-0 text-center py-3"
+            ></tbody>
+          </table>
         </div>
-        <div
-          id="rowDataBookMark"
-          class="row bg-light text-dark opacity-0 text-center py-3"
-        ></div>
       </div>
     </section>
-
     <script src="js/index.js"></script>
   </body>
 </html>
