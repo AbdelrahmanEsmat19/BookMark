@@ -1,39 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400..700&family=Italianno&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400..700&family=Edu+TAS+Beginner:wght@400..700&family=Italianno&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400..700&family=Edu+TAS+Beginner&family=Italianno&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
-body{
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400..700&family=Italianno&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400..700&family=Edu+TAS+Beginner:wght@400..700&family=Italianno&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400..700&family=Edu+TAS+Beginner&family=Italianno&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+body {
   font-family: "Zilla Slab", serif;
   font-weight: 600;
-
+  font-size: 16px; 
 }
+
 #bookmark {
   color: white;
   background-image: url(../imags/bg.jpg);
   min-height: 100vh;
-  background-position: 100% 100%;
+  background-position: center;
   background-size: cover;
   background-attachment: fixed;
-
+  padding: 50px 0; 
 }
+
 #bookmark h1 {
   font-family: "Anton", sans-serif;
   font-weight: 700;
-  font-size: 3.5rem;
-
+  font-size: 3rem; 
+  margin-bottom: 20px; 
 }
+
 #bookmark h2 {
   font-family: "Edu TAS Beginner", cursive;
   font-weight: 800;
-  font-size: 2.5rem;
-
-}
-#bookmark h3 {
-  font-size: 1.25rem;
-}
-#bookmark h1 span {
-  color: #585858;
+  font-size: 2rem; 
+  margin-bottom: 20px; 
 }
 
-.modal-dialog {
-  margin-top: 11%;
+.table-container {
+  overflow-x: auto; 
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+th {
+  padding: 1rem;
+  text-align: center; 
 }
