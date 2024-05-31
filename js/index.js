@@ -1,98 +1,71 @@
-var siteNameInput = document.getElementById('siteName')
-var siteURLInput = document.getElementById('siteURL')
-var bookMarkContainer;
+var siteNameInput = document.getElementById('siteName');
+var siteURLInput = document.getElementById('siteURL');
+var bookMarkContainer = localStorage.getItem("bookMark") ? JSON.parse(localStorage.getItem("bookMark")) : [];
+displayBookmarks();
 
 
-if (localStorage.getItem("bookMark") == null) {
-    bookMarkContainer = [];
-}
-else {
-
-    bookMarkContainer = JSON.parse(localStorage.getItem('bookMark'));
-    displayBookMarks();
+function clearValidationClasses() {
+    siteNameInput.classList.remove("is-valid", "is-invalid");
+    siteURLInput.classList.remove("is-valid", "is-invalid");
 }
 
-function addBookMark(element) {
-
-
-    if (validateName(siteNameInput) && validateName(siteURLInput)) {
-
-        var bookMarks = {
-
-            nameBookMark: siteNameInput.value,
-            siteBookMark: siteURLInput.value,
-
-        }
-        bookMarkContainer.push(bookMarks)
-        displayBookMarks()
-        localStorage.setItem('bookMark', JSON.stringify(bookMarkContainer))
-        clearBookMarks()
-
-    }
-    else {
-
-
-        document.getElementById('exampleModal').classList.replace('d-none', 'd-block')
-
-    }
-
-}
-
-function clearBookMarks() {
-
+function clearInputs() {
     siteNameInput.value = "";
     siteURLInput.value = "";
-
 }
 
-function displayBookMarks() {
-
-    var bookMarksBox = ``;
-    for (var i = 1; i < bookMarkContainer.length; i++) {
-
-        bookMarksBox += `   
-    <div class="col-3"><h4>${i}</h4></div>
-    <div class="col-3"><h4>${bookMarkContainer[i].nameBookMark}</h4></div>
-    <div class="col-3"><a href="${bookMarkContainer[i].siteBookMark}" target="_blank"><button class="text-white btn btn-success my-1 px-4">Visit</button></a></div>
-    <div class="col-3"><button class="btn px-4  btn-danger" onclick="deleteBookMark(${i})">Delete</button></div>`
-        document.getElementById("rowDataBookMark").classList.replace('opacity-0', 'opacity-100')
-
+function addBookmark() {
+    if (validateInput(siteNameInput) && validateInput(siteURLInput)) {
+        var bookmark = {
+            name: siteNameInput.value,
+            url: siteURLInput.value
+        };
+        bookMarkContainer.push(bookmark);
+        displayBookmarks();
+        localStorage.setItem('bookMark', JSON.stringify(bookMarkContainer));
+        clearValidationClasses();
+        clearInputs();
     }
-    document.getElementById("rowDataBookMark").innerHTML = bookMarksBox;
-
 }
 
-function deleteBookMark(deleteIndexBookMark) {
 
-    bookMarkContainer.splice(deleteIndexBookMark, 1)
-    displayBookMarks()
-    localStorage.setItem('bookMark', JSON.stringify(bookMarkContainer))
-
+function displayBookmarks() {
+    var bookMarksBox = '';
+    for (var i = 0; i < bookMarkContainer.length; i++) {
+        bookMarksBox += `
+      <tr>
+        <td>${i + 1}</td>
+        <td>${bookMarkContainer[i].name}</td>
+        <td><a href="${bookMarkContainer[i].url}" target="_blank"><button class="btn btn-success my-1 px-4">Visit</button></a></td>
+        <td><button class="btn px-4 btn-danger" onclick="deleteBookmark(${i})">Delete</button></td>
+      </tr>`;
+    }
+    document.getElementById("rowDataBookmark").innerHTML = bookMarksBox;
+    document.getElementById("rowDataBookmark").classList.replace('opacity-0', 'opacity-100');
 }
 
-function validateName(element) {
+function deleteBookmark(index) {
+    bookMarkContainer.splice(index, 1);
+    displayBookmarks();
+    localStorage.setItem('bookMark', JSON.stringify(bookMarkContainer));
+}
 
+function validateInput(element) {
     var regex = {
+        siteName: /^[A-Za-z\u0600-\u06FF]{3,}$/,
+        siteURL: /^(https?:\/\/)?([\w\d-]+\.){1,2}[a-z]{2,}(\/\S*)?$/
+    };
+    var isValid = regex[element.id].test(element.value);
+    var alertElement = element.id === 'siteName' ? document.getElementById('nameAlert') : document.getElementById('urlAlert');
 
-        siteName: /^[A-Za-z]{3,}$/
-        ,
-        siteURL: /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[-a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/g,
+    if (isValid) {
+        element.classList.add("is-valid");
+        element.classList.remove("is-invalid");
+        alertElement.classList.replace('d-block', 'd-none');
+    } else {
+        element.classList.add("is-invalid");
+        element.classList.remove("is-valid");
+        alertElement.classList.replace('d-none', 'd-block');
     }
-
-    if (regex[element.id].test(element.value)) {
-
-        element.classList.add("is-valid")
-        element.classList.remove("is-invalid")
-        element.nextElementSibling.classList.replace('d-block', 'd-none')
-        return true
-
-    }
-    else {
-
-        element.classList.add("is-invalid")
-        element.classList.remove("is-valid")
-        element.nextElementSibling.classList.replace('d-none', 'd-block')
-        return false
-    }
+    return isValid;
 }
-
